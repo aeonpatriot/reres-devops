@@ -83,17 +83,14 @@ public class DashboardServlet extends HttpServlet {
         
         String action = request.getParameter("action");
                 
-        if(action == null) {
-            
-        }
-        else if(action.equals(ACTION_VIEW_DASHBOARD)) {
-            request.setAttribute(TopNavigationBarReference.SELECTED_PAGE, TopNavigationBarReference.DASHBOARD_PAGE);
-            setupGraphData(request, response);
-            View.forwardPage(request, response, Path.DASHBOARD_PATH);
-        }else if(action.equals(ACTION_VIEW_BOOKING_MONEY_GAINED)) {
-            request.setAttribute(TopNavigationBarReference.SELECTED_PAGE, TopNavigationBarReference.DASHBOARD_PAGE);
-            setupGraphData(request, response);
-            View.forwardPage(request, response, Path.DASHBOARD_PATH);
+        if(action != null) {
+            switch(action) {
+              case ACTION_VIEW_DASHBOARD:
+              case ACTION_VIEW_BOOKING_MONEY_GAINED:
+                request.setAttribute(TopNavigationBarReference.SELECTED_PAGE, TopNavigationBarReference.DASHBOARD_PAGE);
+                setupGraphData(request, response);
+                View.forwardPage(request, response, Path.DASHBOARD_PATH);
+            }
         }
     }
     

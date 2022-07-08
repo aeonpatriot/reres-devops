@@ -18,6 +18,9 @@ import com.RERES.path.Path;
 import static com.RERES.path.Path.MAIN_VIEW_PATH;
 import static com.RERES.references.TopNavigationBarReference.HOME_PAGE;
 import static com.RERES.references.TopNavigationBarReference.SELECTED_PAGE;
+import static com.RERES.references.TopNavigationBarReference.BOOKING_LIST_PAGE;
+import static com.RERES.references.TopNavigationBarReference.BOOKING_DETAILS_PAGE;
+import static com.RERES.references.TopNavigationBarReference.SELECTED_MANAGE_BOOKING_PAGE;
 import com.RERES.view.View;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -128,33 +131,33 @@ public class BookingServlet extends HttpServlet {
         String action = request.getParameter("action");
         
         if(isStringIsNullOrEmpty(action)) {
-            request.setAttribute(SELECTED_PAGE, HOME_PAGE);
-            View.setOverlayStatusMessage(request, response, "none", "Some errors happen. Back to Home Page", "none", null, null);
-            View.includePage(request, response, Path.HOME_VIEW_PATH);
+          request.setAttribute(SELECTED_PAGE, HOME_PAGE);
+          View.setOverlayStatusMessage(request, response, "none", "Some errors happen. Back to Home Page", "none", null, null);
+          View.includePage(request, response, Path.HOME_VIEW_PATH);
         }
         else if(action.equals(ACTION_VIEW_BOOKING_LIST)) {
-            request.setAttribute("selectedPage", "bookingListPage");
-            processViewBookingList(request, response);
+          request.setAttribute(SELECTED_PAGE, BOOKING_LIST_PAGE);
+          processViewBookingList(request, response);
         }
         else if(action.equals(ACTION_VIEW_THE_SELECTED_BOOKING)) {
-            request.setAttribute("selectedPage", "bookingListPage");
-            request.setAttribute("selectedManageBookingPage", "bookingDetailsPage");
-            processViewTheSelectedBooking(request, response, "bookingDetails.jsp");
+          request.setAttribute(SELECTED_PAGE, BOOKING_LIST_PAGE);
+          request.setAttribute(SELECTED_MANAGE_BOOKING_PAGE, BOOKING_DETAILS_PAGE);
+          processViewTheSelectedBooking(request, response, "bookingDetails.jsp");
         }
         else if(action.equals(ACTION_VIEW_BOOKING_DETAILS)) {
-            request.setAttribute("selectedManageBookingPage", "bookingDetailsPage");
-            request.setAttribute("selectedPage", "bookingListPage");
-            processViewTheSelectedBooking(request, response, "bookingDetails.jsp");
+          request.setAttribute(SELECTED_PAGE, BOOKING_LIST_PAGE);
+          request.setAttribute(SELECTED_MANAGE_BOOKING_PAGE, BOOKING_DETAILS_PAGE);
+          processViewTheSelectedBooking(request, response, "bookingDetails.jsp");
         }
         else if(action.equals(ACTION_VIEW_ORDER_DETAILS)) {
-            request.setAttribute("selectedManageBookingPage", "orderDetailsPage");
-            request.setAttribute("selectedPage", "bookingListPage");
-            processViewTheSelectedBooking(request, response, "orderDetails.jsp");
+          request.setAttribute(SELECTED_PAGE, BOOKING_LIST_PAGE);
+          request.setAttribute(SELECTED_MANAGE_BOOKING_PAGE, BOOKING_DETAILS_PAGE);
+          processViewTheSelectedBooking(request, response, "orderDetails.jsp");
         }
         else if(action.equals(ACTION_VIEW_AMOUNT_SUMMARY)) {
-            request.setAttribute("selectedManageBookingPage", "amountSummaryPage");
-            request.setAttribute("selectedPage", "bookingListPage");
-            processViewTheSelectedBooking(request, response, "amountSummary.jsp");
+          request.setAttribute("selectedManageBookingPage", "amountSummaryPage");
+          request.setAttribute("selectedPage", "bookingListPage");
+          processViewTheSelectedBooking(request, response, "amountSummary.jsp");
         }
         else if(action.equals(ACTION_VIEW_REFUND_DETAILS)) {
             request.setAttribute("selectedManageBookingPage", "refundDetailsPage");

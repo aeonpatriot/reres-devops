@@ -12,7 +12,6 @@ package com.RERES.references;
 public interface TopNavigationBarReference {
     String SELECTED_PAGE = "selectedPage";
     
-    
     // List of pageSelected values for authenticated user
     String STAFF_LIST_PAGE = "staffListPage";
     String CUSTOMERS_LIST_PAGE = "customersListPage";
@@ -24,6 +23,8 @@ public interface TopNavigationBarReference {
     String MANAGE_FOOD_PAGE = "manageFoodPage";
     String DASHBOARD_PAGE = "dashboardPage";
     String MANAGE_TABLE_PAGE = "manageTablePage";
+    String BOOKING_DETAILS_PAGE = "bookingDetailsPage";
+    String SELECTED_MANAGE_BOOKING_PAGE = "selectedManageBookingPage";
     
     // List of pageSelected values for public
     String LOGIN_PAGE = "loginPage";
